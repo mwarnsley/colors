@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
+import styled from 'styled-components';
 
 import map from 'lodash/map';
 import uuidv4 from 'uuid/v4';
+
+const PaletteContainer = styled.div`
+    height: 100vh;
+`;
+
+const PaletteColors = styled.div`
+    height: 90%;
+`;
 
 class Palette extends Component {
     renderColorBoxes = () => {
@@ -17,9 +26,9 @@ class Palette extends Component {
     };
     render() {
         return (
-            <div>
-                <div>{this.renderColorBoxes()}</div>
-            </div>
+            <PaletteContainer>
+                <PaletteColors>{this.renderColorBoxes()}</PaletteColors>
+            </PaletteContainer>
         );
     }
 }

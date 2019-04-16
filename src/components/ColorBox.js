@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const ColorBoxContainer = styled.div`
+    background-color: ${props => props.backgroundColor};
+    cursor: pointer;
+    display: inline-block;
+    height: 25%;
+    margin: 0 auto;
+    position: relative;
+    width: 20%;
+`;
 
 class ColorBox extends Component {
     render() {
+        const { background, name } = this.props;
         return (
-            <div style={{ background: this.props.background }}>
-                <span>{this.props.name}</span>
+            <ColorBoxContainer backgroundColor={background}>
+                <span>{name}</span>
                 <span>MORE</span>
-            </div>
+            </ColorBoxContainer>
         );
     }
 }
