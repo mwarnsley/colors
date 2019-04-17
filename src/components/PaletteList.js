@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
 import styled from 'styled-components';
 import uuidv4 from 'uuid/v4';
@@ -10,7 +10,7 @@ const MiniPaletteContainer = styled.div`
         align-items: flex-start;
         background-color: blue;
         display: flex;
-        height: 100%;
+        height: 100vh;
         justify-content: center;
     `,
     Container = styled.div`
@@ -35,13 +35,18 @@ const MiniPaletteContainer = styled.div`
     `;
 
 class PaletteList extends Component {
+    onMiniPaletteClick = id => () => {
+        const { history } = this.props;
+        history.push(`/palette/${id}`);
+    };
     renderPalettes = () => {
         const { palettes } = this.props;
         return map(palettes, palette => (
-            <MiniPalette key={uuidv4()} {...palette} />
-            // <Link key={uuidv4()} to={`/palette/${palette.id}`}>
-            //     {palette.paletteName}
-            // </Link>
+            <MiniPalette
+                {...palette}
+                key={uuidv4()}
+                handlePaletteClick={this.onMiniPaletteClick(palette.id)}
+            />
         ));
     };
     render() {
@@ -60,4 +65,4 @@ class PaletteList extends Component {
     }
 }
 
-export default PaletteList;
+export default withRouter(PaletteList);

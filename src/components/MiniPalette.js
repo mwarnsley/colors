@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import uuidv4 from 'uuid/v4';
+
+import map from 'lodash/map';
 
 const MiniPaletteContainer = styled.div`
         background-color: #ffffff;
@@ -13,8 +16,21 @@ const MiniPaletteContainer = styled.div`
             cursor: pointer;
         }
     `,
+    MiniColor = styled.div`
+        background-color ${({ backgroundColor }) => backgroundColor};
+        display: inline-block;
+        height: 25%;
+        margin: 0 auto;
+        margin-bottom: -3.5px;
+        position: relative;
+        width: 20%;
+    `,
     ColorsContainer = styled.div`
-        background-color: grey;
+        background-color: #dae1e4;
+        border-radius: 5px;
+        height: 150px;
+        overflow: hidden;
+        width: 100%;
     `,
     Title = styled.h5`
         align-items: center;
@@ -31,10 +47,13 @@ const MiniPaletteContainer = styled.div`
         font-size: 1.5rem;
     `;
 
-const MiniPalette = ({ paletteName, emoji }) => {
+const MiniPalette = ({ colors, emoji, handlePaletteClick, paletteName }) => {
+    const miniColorBoxes = map(colors, color => (
+        <MiniColor backgroundColor={color.color} key={uuidv4()} />
+    ));
     return (
-        <MiniPaletteContainer>
-            <ColorsContainer />
+        <MiniPaletteContainer onClick={handlePaletteClick}>
+            <ColorsContainer>{miniColorBoxes}</ColorsContainer>
             <Title>
                 {paletteName} <Emoji>{emoji}</Emoji>
             </Title>
@@ -44,6 +63,7 @@ const MiniPalette = ({ paletteName, emoji }) => {
 
 MiniPalette.propTypes = {
     emoji: PropTypes.string,
+    handlePaletteClick: PropTypes.func.isRequired,
     paletteName: PropTypes.string.isRequired
 };
 
