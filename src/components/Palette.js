@@ -8,28 +8,25 @@ import map from 'lodash/map';
 import uuidv4 from 'uuid/v4';
 
 const PaletteContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-`;
-
-const PaletteColors = styled.div`
-    height: 90%;
-`;
-
-const PaletteFooter = styled.div`
-    align-items: center;
-    background-color: #ffffff;
-    display: flex;
-    font-weight: bold;
-    height: 5vh;
-    justify-content: flex-end;
-`;
-
-const EmojiContainer = styled.div`
-    font-size: 1.5rem;
-    margin: 0 1rem;
-`;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    `,
+    PaletteColors = styled.div`
+        height: 90%;
+    `,
+    PaletteFooter = styled.div`
+        align-items: center;
+        background-color: #ffffff;
+        display: flex;
+        font-weight: bold;
+        height: 5vh;
+        justify-content: flex-end;
+    `,
+    EmojiContainer = styled.div`
+        font-size: 1.5rem;
+        margin: 0 1rem;
+    `;
 
 class Palette extends Component {
     state = {
