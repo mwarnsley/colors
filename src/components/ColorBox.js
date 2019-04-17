@@ -94,6 +94,7 @@ const CopyMessage = styled.div`
 
 const CopyTitle = styled.h1`
     background: rgba(255, 255, 255, 0.2);
+    font-size: 6rem;
     font-weight: 400;
     margin-bottom: 0;
     padding: 1rem;
@@ -105,6 +106,7 @@ const CopyTitle = styled.h1`
 
 const CopyColor = styled.p`
     font-size: 2rem;
+    font-weight: 100;
 `;
 
 const CopyOverlay = styled.div`
