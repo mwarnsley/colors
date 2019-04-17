@@ -8,11 +8,27 @@ import map from 'lodash/map';
 import uuidv4 from 'uuid/v4';
 
 const PaletteContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     height: 100vh;
 `;
 
 const PaletteColors = styled.div`
     height: 90%;
+`;
+
+const PaletteFooter = styled.div`
+    align-items: center;
+    background-color: #ffffff;
+    display: flex;
+    font-weight: bold;
+    height: 5vh;
+    justify-content: flex-end;
+`;
+
+const EmojiContainer = styled.div`
+    font-size: 1.5rem;
+    margin: 0 1rem;
 `;
 
 class Palette extends Component {
@@ -45,6 +61,9 @@ class Palette extends Component {
     };
     render() {
         const { level } = this.state;
+        const {
+            palette: { emoji, paletteName }
+        } = this.props;
         return (
             <PaletteContainer>
                 <Navbar
@@ -53,6 +72,10 @@ class Palette extends Component {
                     level={level}
                 />
                 <PaletteColors>{this.renderColorBoxes()}</PaletteColors>
+                <PaletteFooter>
+                    {paletteName}
+                    <EmojiContainer>{emoji}</EmojiContainer>
+                </PaletteFooter>
             </PaletteContainer>
         );
     }
