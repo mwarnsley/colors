@@ -17,15 +17,20 @@ const PaletteColors = styled.div`
 
 class Palette extends Component {
     state = {
+        format: 'hex',
         level: 500
     };
     renderColorBoxes = () => {
-        const { level } = this.state;
+        const { format, level } = this.state;
         const {
             palette: { colors }
         } = this.props;
         return map(colors[level], color => (
-            <ColorBox background={color.hex} name={color.name} key={uuidv4()} />
+            <ColorBox
+                background={color[format]}
+                name={color.name}
+                key={uuidv4()}
+            />
         ));
     };
     changeLevel = level => {
@@ -33,11 +38,20 @@ class Palette extends Component {
             level
         });
     };
+    changeFormat = value => {
+        this.setState({
+            format: value
+        });
+    };
     render() {
         const { level } = this.state;
         return (
             <PaletteContainer>
-                <Navbar changeLevel={this.changeLevel} level={level} />
+                <Navbar
+                    changeLevel={this.changeLevel}
+                    handleSelectChange={this.changeFormat}
+                    level={level}
+                />
                 <PaletteColors>{this.renderColorBoxes()}</PaletteColors>
             </PaletteContainer>
         );
