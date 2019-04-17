@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import styled from 'styled-components';
 
@@ -161,5 +162,10 @@ class ColorBox extends Component {
         );
     }
 }
+
+ColorBox.propTypes = {
+    background: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+};
 
 export default ColorBox;

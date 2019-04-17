@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ColorBox from './ColorBox';
+import Navbar from './Navbar';
 import styled from 'styled-components';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-import '../rc-slider.css';
 
 import map from 'lodash/map';
 import uuidv4 from 'uuid/v4';
@@ -14,12 +13,6 @@ const PaletteContainer = styled.div`
 
 const PaletteColors = styled.div`
     height: 90%;
-`;
-
-const SliderContainer = styled.div`
-    display: inline-block;
-    margin: 0 10px;
-    width: 350px;
 `;
 
 class Palette extends Component {
@@ -44,19 +37,15 @@ class Palette extends Component {
         const { level } = this.state;
         return (
             <PaletteContainer>
-                <SliderContainer>
-                    <Slider
-                        defaultValue={level}
-                        max={900}
-                        min={100}
-                        onAfterChange={this.changeLevel}
-                        step={100}
-                    />
-                </SliderContainer>
+                <Navbar changeLevel={this.changeLevel} level={level} />
                 <PaletteColors>{this.renderColorBoxes()}</PaletteColors>
             </PaletteContainer>
         );
     }
 }
+
+Palette.propTypes = {
+    palette: PropTypes.shape({}).isRequired
+};
 
 export default Palette;

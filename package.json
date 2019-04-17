@@ -6,6 +6,7 @@
     "chroma-js": "^2.0.3",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
     "rc-slider": "^8.6.9",
     "react": "^16.8.6",
     "react-copy-to-clipboard": "^5.0.1",
